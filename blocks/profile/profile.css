@@ -1,0 +1,10 @@
+.profile {
+    display: grid;
+    grid-template-columns: 120px 1fr 150px;
+    grid-template-areas:
+    "ava title button"
+    "ava subtitle button";
+    width: 100%;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+}
