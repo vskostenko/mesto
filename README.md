@@ -12,5 +12,5 @@
 * CSS
 * JavaScript
 
-Проект доступен на ГитХабе по [ссылке]()
+Проект доступен на ГитХабе по [ссылке](https://vskostenko.github.io/mesto/index.html)
 
