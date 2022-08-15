@@ -8,3 +8,17 @@
     grid-template-rows: 1fr 1fr;
     align-items: center;
 }
+@media screen and (max-width:768px) {
+    .profile {
+        grid-template-columns: 1fr;
+        grid-template-rows: 136px 50px 50px 50px;
+        grid-template-areas: 
+        "ava"
+        "title"
+        "subtitle"
+        "button";
+        justify-items: center;
+        align-items: start;
+    }
+    
+}

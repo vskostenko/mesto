@@ -1,3 +1,10 @@
 .profile__image-pen {
     margin: 7px;
 }
+@media screen and (max-width:768px) {
+    .profile__image-pen {
+        margin: 5.25px;
+        width: 7.5px;
+        height: 7.5px;
+    }
+}

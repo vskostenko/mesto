@@ -13,50 +13,50 @@
       </section>
       <main>
         <section class="profile">
-          <img class="profile__avatar" src="./images/avatar.jpg">
+          <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар">
             <div class="profile__title-block">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <div class="profile__edit-button">
-                <img class="profile__image-pen"src="./images/button.png">
+                <img class="profile__image-pen"src="./images/button.png" alt="изменить">
               </div>
             </div>
             <h2 class="profile__subtitle">Исследователь океана</h2>
             <div class="profile__add-button">
-              <img class="profile__image-plus" src="./images/plus.png">
+              <img class="profile__image-plus" src="./images/plus.png" alt="добавить">
             </div>
         </section>
         <section class="elements">
           <ul class="elements__list">
             <li class="elements__element">
-              <img src="./images/elements/карачаевск.png">
+              <img src="./images/elements/карачаевск.png" alt="Карачаевск">
               <div class="elements__caption">
                 <h2 class="elements__text">Карачаевск</h2>
                 <img class="elements__like" src="./images/like.png">
               </div>
             </li>
             <li class="elements__element">
-              <img src="./images/elements/гора эльбрус.png">
+              <img src="./images/elements/гора эльбрус.png" alt="эльбрус"> 
               <div class="elements__caption">
                 <h2 class="elements__text">Гора Эльбрус</h2>
                 <img class="elements__like" src="./images/like.png">
               </div>
             </li>
             <li class="elements__element">
-              <img src="./images/elements/домбай.png">
+              <img src="./images/elements/домбай.png" alt="Добмай">
               <div class="elements__caption">
                 <h2 class="elements__text">Домбай</h2>
                 <img class="elements__like" src="./images/like.png">
               </div>
             </li>
             <li class="elements__element">
-              <img src="./images/elements/гора эльбрус.png">
+              <img src="./images/elements/гора эльбрус.png" alt="эльбрус">
               <div class="elements__caption">
                 <h2 class="elements__text">Гора Эльбрус</h2>
                 <img class="elements__like" src="./images/like.png">
               </div>
             </li>
             <li class="elements__element">
-              <img src="./images/elements/домбай.png">
+              <img src="./images/elements/домбай.png" alt="Добмай">
               <div class="elements__caption">
                 <h2 class="elements__text">Домбай</h2>
                 <img class="elements__like" src="./images/like.png">
@@ -66,7 +66,7 @@
               <img src="./images/elements/карачаево-ч.png">
               <div class="elements__caption">
                 <h2 class="elements__text">Карачаево-Черкессия</h2>
-                <img class="elements__like" src="./images/like.png">
+                <img class="elements__like" src="./images/like.png" alt="Карачаево-Черкессия">
               </div>
             </li>
           </ul>
@@ -74,7 +74,20 @@
         <footer>
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
-
+        <section class="popup">
+          <div class="popup__container">
+            <img class="popup__close-icon" src="./images/Close Icon.png" alt="close">
+            <div class="popup__form">
+              <h2 class="popup__header">Редактировать профиль</h2>
+              <input class="popup__field" type="text" name="title" value="Имя">
+              <div class="popup__line"> </div>
+              <input class="popup__field" type="text" name="subtitle" value="Профессия">
+              <div class="popup__line"> </div>
+              <input class="popup__button" type="button" value="Сохранить">
+            </div>
+          </div>
+        </section>
       </main>
     </div>
+    <script src="script.js"></script>  
 </body>
