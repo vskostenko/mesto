@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    background: none;
 }
 .profile__add-button:hover {
     opacity: 0.6;

@@ -1,6 +1,9 @@
-.elements__like {
+.elements__like-button {
     width: 22px;
     height: 19px;
+    padding: 0;
+    border: 0;
+    background: none;
 }
 .elements__like:hover {
     opacity: 0.5;

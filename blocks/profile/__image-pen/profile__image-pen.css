@@ -1,10 +1,11 @@
 .profile__image-pen {
-    margin: 7px;
+    vertical-align: center;
 }
 @media screen and (max-width:768px) {
     .profile__image-pen {
-        margin: 5.25px;
+       /* margin: 5.25px;*/
         width: 7.5px;
         height: 7.5px;
+        margin: 2.5px;
     }
 }
