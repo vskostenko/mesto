@@ -18,5 +18,6 @@
         height: 18px;
         margin-left: 10px;
         align-self: baseline;
+        max-width: 282px;
     }
 }

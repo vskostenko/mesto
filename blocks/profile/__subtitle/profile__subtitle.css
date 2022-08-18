@@ -6,7 +6,7 @@
     line-height: 22px;
     margin-left: 30px;
     grid-area: subtitle;
-    max-width: 500px;
+    max-width: 336px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -19,5 +19,6 @@
         line-height: 17px;
         text-align: center;
         margin: 0;
+        max-width: 282px;
     }
 }

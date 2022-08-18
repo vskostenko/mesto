@@ -5,4 +5,5 @@
     height: 39px;
     display: flex;
     align-items: baseline;
+    max-width: 336px;
 }
