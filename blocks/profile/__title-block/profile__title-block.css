@@ -7,3 +7,9 @@
     align-items: baseline;
     max-width: 336px;
 }
+@media screen and (max-width:768px) {
+    .profile__title-block{
+        margin:0;
+        max-width: 282px;
+    }
+}
