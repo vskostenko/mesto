@@ -16,7 +16,7 @@ const placeInput = document.querySelector("input[name='place']");
 const urlInput = document.querySelector("input[name='imagelink']");
 const fullviewImage = document.querySelector('.image-popup__image');
 const imgPopupElement = document.querySelector('.image-popup');
-const closeFullvieweImageBtn = document.querySelector('.popup-image__close-button');
+const closeFullvieweImageBtn = document.querySelector('.image-popup__close-button');
 const imgPopupCaptionElement = document.querySelector('.image-popup__caption');
 
 function addCard(item) {
