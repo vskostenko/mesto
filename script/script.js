@@ -83,7 +83,6 @@ function submitButtonHandler(evt) {
     }
   ]
   addCard(card[0]);
-  console.log(card);
   newItem.classList.remove('newitem_opened');
 }
 function closeFullViewImg () {
