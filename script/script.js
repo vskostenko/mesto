@@ -25,7 +25,7 @@ function addCard(item) {
     <li class="elements__element">
     <img class="elements__image" src="${item.link}" alt="${item.place}">
     <button type="button" class="elements__trash-button">
-      <img class="elements__trash-icon" src="./images/trash.svg">
+      <img class="elements__trash-icon" src="./images/Trash.svg">
       </button>
     <div class="elements__caption">
       <h2 class="elements__text">${item.place}</h2>
@@ -51,8 +51,6 @@ function addCard(item) {
       imgPopupElement.classList.add('image-popup_opened');
       imgPopupCaptionElement.textContent = item.place;
     });
-
-
   }
 function editProfile() {
   popupTitle.value = title.textContent;
