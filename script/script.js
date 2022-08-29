@@ -14,13 +14,18 @@ const newItem = document.querySelector('.newitem');
 const submitFormElement = document.getElementById('submitnewcard');
 const placeInput = document.querySelector("input[name='place']");
 const urlInput = document.querySelector("input[name='imagelink']");
+const fullviewImage = document.querySelector('.image-popup__image');
+const imgPopupElement = document.querySelector('.image-popup');
+const closeFullvieweImageBtn = document.querySelector('.popup-image__close-button');
+const imgPopupCaptionElement = document.querySelector('.image-popup__caption');
+
 
 function addCard(item) {
     htmlList = `
     <li class="elements__element">
     <img class="elements__image" src="${item.link}" alt="${item.place}">
     <button type="button" class="elements__trash-button">
-      <img class="elements__trash" src="./images/trash.svg">
+      <img class="elements__trash-icon" src="./images/trash.svg">
       </button>
     <div class="elements__caption">
       <h2 class="elements__text">${item.place}</h2>
@@ -39,6 +44,12 @@ function addCard(item) {
     let trash = listElement.querySelector('.elements__trash-button');
     trash.addEventListener('click',function () {
         trash.parentNode.remove();
+    });
+    let imageClick = listElement.querySelector('.elements__image'); 
+    imageClick.addEventListener('click',function () {
+      fullviewImage.setAttribute('src',item.link);
+      imgPopupElement.classList.add('image-popup_opened');
+      imgPopupCaptionElement.textContent = item.place;
     });
 
 
@@ -78,6 +89,9 @@ function submitButtonHandler(evt) {
   console.log(card);
   newItem.classList.remove('newitem_opened');
 }
+function closeFullViewImg () {
+  imgPopupElement.classList.remove('image-popup_opened');
+}
 
 initialCards.forEach(addCard);
 button.addEventListener('click', editProfile);
@@ -86,3 +100,4 @@ close.addEventListener('click', closePopup);
 closeNewItemButton.addEventListener('click',closeNewItem);
 formElement.addEventListener('submit', formSubmitHandler);
 submitFormElement.addEventListener('submit', submitButtonHandler);
+closeFullvieweImageBtn.addEventListener('click',closeFullViewImg);

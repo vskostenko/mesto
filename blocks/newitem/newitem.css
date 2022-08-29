@@ -1,5 +1,5 @@
 .newitem {
-    display: none;
+    display: flex;
     position: fixed;
     justify-content: center;
     align-content: space-between;
@@ -13,4 +13,7 @@
     z-index: 999;
     animation: fade .6s;
     overflow: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
 }
