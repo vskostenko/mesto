@@ -40,6 +40,13 @@
 @import url(../blocks/newitem/newitem.css);
 @import url(../blocks/newitem/_opened/newitem_opened.css);
 @import url(../blocks/image-popup/image-popup.css);
+@import url(../blocks/newitem/__container/newitem__container.css);
+@import url(../blocks/newitem/__form/newitem__form.css);
+@import url(../blocks/newitem/__field/newitem__field.css);
+@import url(../blocks/newitem/__header/newitem__header.css);
+@import url(../blocks/newitem/__button/newitem__button.css);
+@import url(../blocks/newitem/__close-button/newitem__close-button.css);
+@import url(../blocks/newitem/__close-icon/newitem__close-icon.css);
 @import url(../blocks/image-popup/__contrainer/image-popup__container.css);
 @import url(../blocks/image-popup/__image/image-popup__image.css);
 @import url(../blocks/image-popup/__caption/image-popup__caption.css);

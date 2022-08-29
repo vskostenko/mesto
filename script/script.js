@@ -19,7 +19,6 @@ const imgPopupElement = document.querySelector('.image-popup');
 const closeFullvieweImageBtn = document.querySelector('.popup-image__close-button');
 const imgPopupCaptionElement = document.querySelector('.image-popup__caption');
 
-
 function addCard(item) {
     htmlList = `
     <li class="elements__element">
