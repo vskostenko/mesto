@@ -1,15 +1,15 @@
-let profileEditButton = document.querySelector('.profile__edit-button');
+const profileEditButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const popup = document.querySelector('.popup');
-let title = document.querySelector('.profile__title');
-let popupTitle = document.querySelector("input[name='title']");
-let subtitle = document.querySelector('.profile__subtitle');
-let popupSubtitleInput = document.querySelector("input[name='subtitle']");
-let close = document.querySelector('.popup__close-icon');
-let closeNewItemButton = document.getElementById('newitemclose');
-let formElement = document.querySelector('.popup__form');
+const title = document.querySelector('.profile__title');
+const popupTitle = document.querySelector("input[name='title']");
+const subtitle = document.querySelector('.profile__subtitle');
+const popupSubtitleInput = document.querySelector("input[name='subtitle']");
+const close = document.querySelector('.popup__close-button');
+const closeNewItemButton = document.querySelector('.new-item__close-button');
+const formElement = document.querySelector('.popup__form');
 const listElement = document.querySelector('.elements__list');
-const newItemElement = document.querySelector('.newitem');
+const newItemElement = document.getElementById('new-item');
 const submitFormAddElement = document.getElementById('submitnewcard');
 const placeInput = document.querySelector("input[name='place']");
 const urlInput = document.querySelector("input[name='imagelink']");
@@ -17,82 +17,71 @@ const fullViewImage = document.querySelector('.image-popup__image');
 const imgPopupElement = document.querySelector('.image-popup');
 const closeFullvieweImageBtn = document.querySelector('.image-popup__close-button');
 const imgPopupCaptionElement = document.querySelector('.image-popup__caption');
+const templateElement = document.querySelector('#template').content;
+console.log (templateElement);
+
+function createCard (link,place) {  
+  const itemTemplate = templateElement.cloneNode(true);
+  itemTemplate.querySelector('.elements__image').setAttribute('src',link);
+  itemTemplate.querySelector('.elements__image').setAttribute('alt',place);
+  itemTemplate.querySelector('.elements__text').textContent = place;
+  return itemTemplate;
+}
 
 function addCard(item) {
-    htmlList = `
-    <li class="elements__element">
-    <img class="elements__image" src="${item.link}" alt="${item.place}">
-    <button type="button" class="elements__trash-button">
-      <img class="elements__trash-icon" src="./images/Trash.svg">
-      </button>
-    <div class="elements__caption">
-      <h2 class="elements__text">${item.place}</h2>
-      <button type="button" class="elements__like-button">
-        <img class="elements__like-icon" src="./images/like.svg" alt="нравится">
-        <img class="elements__like-icon-active" src="./images/like_active.svg" alt="нравится">
-      </button>
-    </div>
-  </li>
-    `;
-    listElement.insertAdjacentHTML("afterbegin",htmlList);
-    let like = listElement.querySelector('.elements__like-button');
+    listElement.prepend(createCard(item.link,item.place));
+    const like = listElement.querySelector('.elements__like-button');
     like.addEventListener('click',function () {
-      like.lastElementChild.classList.toggle('elements__like-icon-active_on');
+      like.classList.toggle('elements__like-button_on');
     });
-    let trash = listElement.querySelector('.elements__trash-button');
+    const trash = listElement.querySelector('.elements__trash-button');
     trash.addEventListener('click',function () {
-        trash.parentNode.remove();
+      trash.parentNode.remove();
     });
-    let imageClick = listElement.querySelector('.elements__image'); 
-    imageClick.addEventListener('click',function () {
+    const imageElement = listElement.querySelector('.elements__image'); 
+    imageElement.addEventListener('click',function () {
       fullViewImage.setAttribute('src',item.link);
       imgPopupElement.classList.add('image-popup_opened');
       imgPopupCaptionElement.textContent = item.place;
     });
   }
-function editProfile() {
+function openEditProfilePopup() {
   popupTitle.value = title.textContent;
   popupSubtitleInput.value = subtitle.textContent;
   popup.classList.add('popup_opened');
 }
-function addItem() {
-  newItemElement.classList.add('newitem_opened');
+function addNewItemPopup() {
+  newItemElement.classList.add('new-item_opened');
 }
 function closeNewItem() {
-  newItemElement.classList.remove('newitem_opened');
+  newItemElement.classList.remove('new-item_opened');
 }
 
-function formSubmitHandler (evt) {
+function formProfileSubmitHandler (evt) {
   evt.preventDefault(); 
   title.textContent = popupTitle.value;
   subtitle.textContent = popupSubtitleInput.value;
   popup.classList.remove('popup_opened');
-  }
+}
 
 function closePopup () {
-    newItemElement.classList.remove('newitem_opened');
+    newItemElement.classList.remove('new-item_opened');
     popup.classList.remove('popup_opened');
 }
 function submitButtonHandler(evt) {
   evt.preventDefault(); 
-  let card =  [
-    {
-    place: placeInput.value,
-    link: urlInput.value
-    }
-  ]
-  addCard(card[0]);
-  newItemElement.classList.remove('newitem_opened');
+  addCard({place: placeInput.value,link: urlInput.value});
+  newItemElement.classList.remove('new-item_opened');
 }
 function closeFullViewImg () {
   imgPopupElement.classList.remove('image-popup_opened');
 }
 
 initialCards.forEach(addCard);
-profileEditButton.addEventListener('click', editProfile);
-addButton.addEventListener('click', addItem);
+profileEditButton.addEventListener('click', openEditProfilePopup);
+addButton.addEventListener('click', addNewItemPopup);
 close.addEventListener('click', closePopup);
 closeNewItemButton.addEventListener('click',closeNewItem);
-formElement.addEventListener('submit', formSubmitHandler);
-submitFormAddElement.addEventListener('submit', submitButtonHandler);
+formElement.addEventListener('submit',formProfileSubmitHandler);
+submitFormAddElement.addEventListener('submit',submitButtonHandler);
 closeFullvieweImageBtn.addEventListener('click',closeFullViewImg);

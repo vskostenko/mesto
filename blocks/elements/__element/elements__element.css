@@ -5,3 +5,6 @@
     background-color: #fff;
     width: 282px;
 }
+.elements__element:hover {
+    cursor: pointer;
+}
