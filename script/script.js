@@ -56,7 +56,6 @@ function addNewItemPopup() {
 function closeNewItem() {
   newItemElement.classList.remove('new-item_opened');
 }
-
 function formProfileSubmitHandler (evt) {
   evt.preventDefault(); 
   title.textContent = popupTitle.value;
