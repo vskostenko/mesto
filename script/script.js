@@ -18,7 +18,6 @@ const imgPopupElement = document.querySelector('.image-popup');
 const closeFullvieweImageBtn = document.querySelector('.image-popup__close-button');
 const imgPopupCaptionElement = document.querySelector('.image-popup__caption');
 const templateElement = document.querySelector('#template').content;
-console.log (templateElement);
 
 function createCard (link,place) {  
   const itemTemplate = templateElement.cloneNode(true);
