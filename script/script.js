@@ -7,17 +7,15 @@ const popupTitle = document.querySelector("input[name='title']");
 const subtitle = document.querySelector('.profile__subtitle');
 const popupSubtitleInput = document.querySelector("input[name='subtitle']");
 const closeButton = document.querySelectorAll('.popup__close-button');
-const closeNewItemButton = document.querySelector('.new-item__close-button');
 const formElement = document.querySelector('.popup__form');
 const listElement = document.querySelector('.elements__list');
 const newItemElement = document.getElementById('new-item');
 const submitFormAddElement = document.getElementById('submitnewcard');
 const placeInput = document.querySelector("input[name='place']");
 const urlInput = document.querySelector("input[name='imagelink']");
-const fullViewImage = document.querySelector('.image-popup__image');
-const imgPopupElement = document.querySelector('.image-popup');
-const closeFullvieweImageBtn = document.querySelector('.image-popup__close-button');
-const imgPopupCaptionElement = document.querySelector('.image-popup__caption');
+const fullViewImage = document.querySelector('.popup__image');
+const imgPopupElement = document.getElementById('image-popup');
+const imgPopupCaptionElement = document.querySelector('.popup__image-caption');
 const templateElement = document.querySelector('#template').content;
 
 function createCard (link,place) {  
@@ -37,8 +35,8 @@ function addCard(item) {
     trash.addEventListener('click', () => {trash.parentNode.remove()});
     imageElement.addEventListener('click', () => {
       fullViewImage.setAttribute('src',item.link);
-      imgPopupElement.classList.add('image-popup_opened');
       imgPopupCaptionElement.textContent = item.place;
+      openPopup(imgPopupElement);
     });
   }
 
@@ -61,17 +59,12 @@ function submitButtonHandler(evt) {
   closePopup(newItemElement);
 }
 
-function closeFullViewImg () {
-  imgPopupElement.classList.remove('image-popup_opened');
-}
-
 function closeButtonHandler (item) {
   const closeButEl= item.querySelector('.popup__close-button');
   closeButEl.addEventListener('click', () => {closePopup(item)});
   }
 
 function closePopup(popupItem) {
-  console.log(popupItem);
   popupItem.classList.remove('popup_opened');
 }
 
@@ -85,4 +78,3 @@ addButton.addEventListener('click', () => openPopup(newItemElement));
 popupElementsArray.forEach(closeButtonHandler);
 formElement.addEventListener('submit',formProfileSubmitHandler);
 submitFormAddElement.addEventListener('submit',submitButtonHandler);
-closeFullvieweImageBtn.addEventListener('click',closeFullViewImg);

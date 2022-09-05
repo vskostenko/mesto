@@ -1,8 +1,8 @@
 .popup__close-button {
+    position: absolute;
     width: 32px;
     height: 32px;
-    position: relative;
-    left: 436px;
+    right: -40px;
     top: -40px;
     background: none;
     border: 0;
