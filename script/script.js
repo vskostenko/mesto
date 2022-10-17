@@ -74,3 +74,4 @@ addButton.addEventListener('click', () => openPopup(newItemElement));
 popupElementsArray.forEach(addCloseButtonHandler);
 formElement.addEventListener('submit',formProfileSubmitHandler);
 submitFormAddElement.addEventListener('submit',submitButtonHandler);
+enableVaildation(validationSettings);

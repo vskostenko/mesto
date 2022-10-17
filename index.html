@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Проект Место</title>
         <link rel="stylesheet" href="pages/index.css">
-        <script defer src="./script/initalСards.js"></script>    
+        <script defer src="./script/initalСards.js"></script>
+        <script defer src="./script/forms.js"></script>    
         <script defer src="./script/script.js"></script>
   </head> 
 <body class="page">
@@ -35,10 +36,12 @@
         <section class="popup" id="editProfileEl">
           <div class="popup__container">
             <button type="button" class="popup__close-button"></button>
-            <form class="popup__form" name="popup__form">
+            <form class="popup__form" name="edit">
               <h2 class="popup__header">Редактировать профиль</h2>
-              <input class="popup__field" type="text" name="title" required placeholder="Имя">
-              <input class="popup__field" type="text" name="subtitle" required placeholder="Профессия">
+              <input class="popup__field" type="text" name="title" placeholder="Имя" id="title" required minlength="2" maxlength="40">
+              <span class="popup__error" id="title-error"></span>
+              <input class="popup__field" type="text" name="subtitle" placeholder="Профессия" id="subtitle" required minlength="2" maxlength="200">
+              <span class="popup__error" id="subtitle-error"></span>
               <input class="popup__button" type="submit" value="Сохранить">
             </form>
           </div>
@@ -46,11 +49,13 @@
         <section class="popup" id="new-item">
           <div class="popup__container">
             <button type="button" class="popup__close-button"></button>
-            <form class="popup__form" name="popup__form" id="submitnewcard">
+            <form class="popup__form" name="newItem" id="submitnewcard">
               <h2 class="popup__header">Новое место</h2>
-              <input class="popup__field" type="text" name="place" required placeholder="Название">
-              <input class="popup__field" type="url" name="imagelink" required placeholder="Ссылка на картинку">
-              <input class="popup__button" type="submit" value="Создать">
+              <input class="popup__field" type="text" name="place" required placeholder="Название" required minlength="2" maxlength="30">
+              <span class="popup__error" id="place-error"></span>
+              <input class="popup__field" type="url" name="imagelink" required placeholder="Ссылка на картинку" required>
+              <span class="popup__error" id="imagelink-error"></span>
+              <input class="popup__button popup__button_disabled" type="submit" value="Создать" disabled>
             </form>
           </div>
         </section>
