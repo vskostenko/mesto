@@ -62,11 +62,33 @@ function addCloseButtonHandler (item) {
 
 function closePopup(popupItem) {
   popupItem.classList.remove('popup_opened');
+  document.removeEventListener('keydown', (evt) => closePopupByEscape (evt));
+  popupItem.removeEventListener('click', (evt) => closePopupByOverlay (evt));
 }
 
 function openPopup(popupItem) {
   popupItem.classList.add('popup_opened');
+  document.addEventListener('keydown', (evt) => closePopupByEscape (evt));
+  popupItem.addEventListener('click', (evt) => closePopupByOverlay (evt));
+  
 }
+
+function closePopupByOverlay (evt) {
+  if (evt.target.classList.contains("popup_opened")){
+    closePopup(evt.target);
+  }
+}
+
+function closePopupByEscape (evt) {
+  if (evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_opened');
+    if (activePopup) {
+      closePopup(activePopup);
+    }
+  }
+}
+
+
 
 initialCards.forEach(createCard);
 profileEditButton.addEventListener('click', openEditProfilePopup);

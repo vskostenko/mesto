@@ -45,18 +45,6 @@ function handleValidateInput(settings,evt) {
     }
 }
 
-function sendForm(evt) {
-    evt.preventDefault();
-    const currentForm = evt.target;
-    if (currentForm.checkValidity()) {
-        console.log('форма отправлена');
-        evt.target.reset();
-    }
-    else {
-        console.log('нененне');
-    }
-}
-
 function enableVaildation (settings) {
     const forms = document.querySelectorAll(settings.formSelector);
     forms.forEach((form) => form.addEventListener('input',(evt) => handleValidateInput(settings,evt))); 
