@@ -1,12 +1,3 @@
-const validationSettings = {
-    formSelector: '.popup__form', 
-    inputSelector: '.popup__input',
-    submitButtonSelector: '.popup__button', 
-    inactiveButtonClass: 'popup__button_disabled',
-    inputErrorClass: 'popup__field_error',
-    errorClass: 'popup__error_visible'
-}
-
 function setSubmitButton (button, state) {
     if (state) {
         button.removeAttribute('disabled');
@@ -15,34 +6,34 @@ function setSubmitButton (button, state) {
     }
 }
 
-function showError(input,settings) {
+function makeInputInvalid(input,settings) {
     input.classList.add(settings.inputErrorClass);
 }
 
-function hideError(input,settings) {
+function makeInputValid(input,settings) {
     input.classList.remove(settings.inputErrorClass);
 }
 
-function isValidField (input,settings) {
+function toggleInputErrorState(input,settings) {
     if (!input.validity.valid) {
-        showError(input,settings);
+        makeInputInvalid(input,settings);
     } else {
-        hideError(input,settings);
+        makeInputValid(input,settings);
     }
     const errorSpan = input.parentNode.querySelector(`#${input.name}-error`);
     errorSpan.textContent = input.validationMessage;
+}
+
+function toggleButtonState(submitButton,state) {
+    setSubmitButton(submitButton,state);
 }
 
 function handleValidateInput(settings,evt) {
     const currentForm = evt.currentTarget;
     const submitButton = currentForm.querySelector(settings.submitButtonSelector);
     const currentField = evt.srcElement;
-    isValidField(currentField,settings);
-    if (currentForm.checkValidity()) {
-        setSubmitButton(submitButton,true);
-    } else {
-        setSubmitButton(submitButton,false);
-    }
+    toggleInputErrorState(currentField,settings);
+    toggleButtonState(submitButton,currentForm.checkValidity());
 }
 
 function enableVaildation (settings) {
