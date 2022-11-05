@@ -1,3 +1,7 @@
+import { initialCards } from './initalСards.js';
+import { Card } from './card.js';
+import { FormValidator } from './formvalidator.js';
+export {openPopup};
 const profileEditButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const editProfilePopup = document.querySelector('#editProfileEl');
@@ -12,9 +16,6 @@ const newItemElement = document.querySelector('#new-item');
 const submitFormAddElement = document.querySelector('#submitnewcard');
 const placeInput = document.querySelector("input[name='place']");
 const urlInput = document.querySelector("input[name='imagelink']");
-const fullViewImage = document.querySelector('.popup__image');
-const imgPopupElement = document.querySelector('#image-popup');
-const imgPopupCaptionElement = document.querySelector('.popup__image-caption');
 const templateElement = document.querySelector('#template').content;
 const validationSettings = {
   formSelector: '.popup__form', 
@@ -26,21 +27,8 @@ const validationSettings = {
 }
 
 function createCard (item) {  
-  const itemTemplate = templateElement.cloneNode(true);
-  itemTemplate.querySelector('.elements__image').setAttribute('src',item.link);
-  itemTemplate.querySelector('.elements__image').setAttribute('alt',item.place);
-  itemTemplate.querySelector('.elements__text').textContent = item.place;
-  listElement.prepend(itemTemplate);
-  const like = listElement.querySelector('.elements__like-button');
-  const trash = listElement.querySelector('.elements__trash-button');
-  const imageElement = listElement.querySelector('.elements__image'); 
-  like.addEventListener('click', () => {like.classList.toggle('elements__like-button_on')});
-  trash.addEventListener('click', () => {trash.parentNode.remove()});
-  imageElement.addEventListener('click', () => {
-    fullViewImage.setAttribute('src',item.link);
-    imgPopupCaptionElement.textContent = item.place;
-    openPopup(imgPopupElement);
-  });
+  const myNewItem = new Card(item,templateElement);
+  listElement.prepend(myNewItem.getCard());
 }
 
 function openEditProfilePopup() {
@@ -62,7 +50,7 @@ function submitAddFormHandler(evt) {
   createCard({place: placeInput.value,link: urlInput.value});
   closePopup(newItemElement);
   submitFormAddElement.reset();
-  toggleButtonState(currentButton,false);
+  currentButton.setAttribute('disabled',true);
 }
 
 function addCloseButtonHandler (item) {
@@ -94,6 +82,14 @@ function closePopupByEscape (evt) {
     const activePopup = document.querySelector('.popup_opened');
       closePopup(activePopup);
   }
+}
+
+function enableVaildation (settings) {
+  const forms = document.querySelectorAll(settings.formSelector);
+  forms.forEach((form) => {
+      const newValid = new FormValidator(settings,form);
+      newValid.enableValidation();
+  }); 
 }
 
 initialCards.forEach(createCard);
