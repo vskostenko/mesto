@@ -1,20 +1,18 @@
-
-    const fullViewImage = document.querySelector('.popup__image');
-    const imgPopupElement = document.querySelector('#image-popup');
-    const imgPopupCaptionElement = document.querySelector('.popup__image-caption');
     import { openPopup } from "./index.js";
+    import {fullViewImage, imgPopupElement, imgPopupCaptionElement} from "./global.js"
+
 export class Card {
     constructor(item,templateElement) {
       this._place = item.place;
       this._link = item.link;
-      this._templateElement=templateElement;
+      this._itemTemplate = templateElement.querySelector('.elements__element').cloneNode(true);
+      this._itemTemplateImage = this._itemTemplate.querySelector('.elements__image');
     }
     _getElementFromTemplate() {
-      const _itemTemplate = this._templateElement.cloneNode(true);
-      _itemTemplate.querySelector('.elements__image').setAttribute('src',this._link);
-      _itemTemplate.querySelector('.elements__image').setAttribute('alt',this._place);
-      _itemTemplate.querySelector('.elements__text').textContent = this._place;
-      return _itemTemplate;
+      this._itemTemplateImage.setAttribute('alt',this._place);
+      this._itemTemplateImage.setAttribute('src',this._link);
+      this._itemTemplate.querySelector('.elements__text').textContent = this._place;
+      return this._itemTemplate;
     }
     _setEventListeners (_listElement) {
       const _like = _listElement.querySelector('.elements__like-button');
@@ -24,6 +22,7 @@ export class Card {
       _trash.addEventListener('click', () => {_trash.parentNode.remove()});
       _imageElement.addEventListener('click', () => {
         fullViewImage.setAttribute('src',this._link);
+        fullViewImage.setAttribute('alt',this._place);
         imgPopupCaptionElement.textContent = this._place;
         openPopup(imgPopupElement);
       });

@@ -1,34 +1,15 @@
 import { initialCards } from './initalСards.js';
 import { Card } from './card.js';
 import { FormValidator } from './formvalidator.js';
+import { profileEditButton,addButton,editProfilePopup,popupElementsArray,title,popupTitle,subtitle,popupSubtitleInput,
+  formProfileElement,listElement,newItemElement,submitFormAddElement,placeInput,urlInput,templateElement,validationSettings } from './global.js';
 export {openPopup};
-const profileEditButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-const editProfilePopup = document.querySelector('#editProfileEl');
-const popupElementsArray = document.querySelectorAll('.popup');
-const title = document.querySelector('.profile__title');
-const popupTitle = document.querySelector("input[name='title']");
-const subtitle = document.querySelector('.profile__subtitle');
-const popupSubtitleInput = document.querySelector("input[name='subtitle']");
-const formProfileElement = document.querySelector('.popup__form');
-const listElement = document.querySelector('.elements__list');
-const newItemElement = document.querySelector('#new-item');
-const submitFormAddElement = document.querySelector('#submitnewcard');
-const placeInput = document.querySelector("input[name='place']");
-const urlInput = document.querySelector("input[name='imagelink']");
-const templateElement = document.querySelector('#template').content;
-const validationSettings = {
-  formSelector: '.popup__form', 
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button', 
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__field_error',
-  errorClass: 'popup__error_visible'
-}
+
 
 function createCard (item) {  
   const myNewItem = new Card(item,templateElement);
   listElement.prepend(myNewItem.getCard());
+  return myNewItem;
 }
 
 function openEditProfilePopup() {
@@ -37,7 +18,7 @@ function openEditProfilePopup() {
   openPopup(editProfilePopup);
 }
 
-function formProfileSubmitHandler (evt) {
+function SubmitFormProfileHandler (evt) {
   evt.preventDefault(); 
   title.textContent = popupTitle.value;
   subtitle.textContent = popupSubtitleInput.value;
@@ -47,10 +28,11 @@ function formProfileSubmitHandler (evt) {
 function submitAddFormHandler(evt) {
   const currentButton = submitFormAddElement.querySelector(validationSettings.submitButtonSelector);
   evt.preventDefault(); 
-  createCard({place: placeInput.value,link: urlInput.value});
+  const currentCard = createCard({place: placeInput.value,link: urlInput.value});
   closePopup(newItemElement);
   submitFormAddElement.reset();
-  currentButton.setAttribute('disabled',true);
+  FormValidator.disableSubmitNewcardButton(currentButton);
+  
 }
 
 function addCloseButtonHandler (item) {
@@ -85,9 +67,11 @@ function closePopupByEscape (evt) {
 }
 
 function enableVaildation (settings) {
+
   const forms = document.querySelectorAll(settings.formSelector);
   forms.forEach((form) => {
       const newValid = new FormValidator(settings,form);
+      newValid.name = form.name;
       newValid.enableValidation();
   }); 
 }
@@ -96,6 +80,6 @@ initialCards.forEach(createCard);
 profileEditButton.addEventListener('click', openEditProfilePopup);
 addButton.addEventListener('click', () => openPopup(newItemElement));
 popupElementsArray.forEach(addCloseButtonHandler);
-formProfileElement.addEventListener('submit',formProfileSubmitHandler);
+formProfileElement.addEventListener('submit',SubmitFormProfileHandler);
 submitFormAddElement.addEventListener('submit',submitAddFormHandler);
 enableVaildation(validationSettings);

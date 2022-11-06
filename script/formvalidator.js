@@ -1,14 +1,15 @@
+import { submitFormAddElement } from "./global.js";
 export class FormValidator {
     constructor (settings,form) {
-        this._settings = settings
+        this._settings = settings;
         this._form = form;
+        this._submitButton = form.querySelector(this._settings.submitButtonSelector);;
     }
-
-    _setSubmitButton (button, state) {
+    _setSubmitButton (state) {
         if (state) {
-            button.removeAttribute('disabled');
+            this._submitButton.removeAttribute('disabled');
         } else {
-            button.setAttribute('disabled',true);
+            this._submitButton.setAttribute('disabled',true);
         }
     }
 
@@ -29,18 +30,19 @@ export class FormValidator {
         const _errorSpan = input.parentNode.querySelector(`#${input.name}-error`);
         _errorSpan.textContent = input.validationMessage;
     }    
-    _toggleButtonState(submitButton,state) {
-        this._setSubmitButton(submitButton,state);
+    _toggleButtonState(state) {
+        this._setSubmitButton(state);
     }
 
     _handleValidateInput(evt) {
         const _currentForm = evt.currentTarget;
-        const _submitButton = _currentForm.querySelector(this._settings.submitButtonSelector);
         const _currentField = evt.srcElement;
         this._toggleInputErrorState(_currentField,this._settings);
-        this._toggleButtonState(_submitButton,_currentForm.checkValidity());
+        this._toggleButtonState(_currentForm.checkValidity());
     }
-
+    static disableSubmitNewcardButton (button) {
+        button.setAttribute('disabled',true);
+    }
     enableValidation () {
         this._form.addEventListener('input',(evt) => this._handleValidateInput(evt)); 
     }

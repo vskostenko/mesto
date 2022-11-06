@@ -5,10 +5,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Проект Место</title>
         <link rel="stylesheet" href="pages/index.css">
-        <script type="module" src="./script/index.js"></script>
-        <script type="module" src="./script/initalСards.js"></script>
-        <script type="module" src="./script/card.js"></script>
-        <script type="module" src="./script/formvalidator.js"></script>
   </head> 
 <body class="page">
     <div class="page__container">
@@ -60,7 +56,7 @@
             </form>
           </div>
         </section>
-        <section class="popup" id="image-popup">
+        <section class="popup popup__image-overlay" id="image-popup">
             <div class="popup__image-container">
               <button type="button" class="popup__close-button"></button>
               <img class="popup__image" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg">
@@ -79,5 +75,6 @@
         </div>
       </li>
     </template>
+    <script type="module" src="./script/index.js"></script>
   </body>
 </html>
