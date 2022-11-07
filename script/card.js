@@ -24,6 +24,8 @@ export class Card {
         fullViewImage.setAttribute('src',this._link);
         fullViewImage.setAttribute('alt',this._place);
         imgPopupCaptionElement.textContent = this._place;
+        console.log(imgPopupElement);
+        imgPopupElement.classList.add('popup__overlay');
         openPopup(imgPopupElement);
       });
       return _listElement;
