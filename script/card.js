@@ -1,4 +1,4 @@
-    import { openPopup } from "./index.js";
+    import { openPopup } from './popup.js';
     import {fullViewImage, imgPopupElement, imgPopupCaptionElement} from "./global.js"
 
 export class Card {
@@ -7,6 +7,7 @@ export class Card {
       this._link = item.link;
       this._itemTemplate = templateElement.querySelector('.elements__element').cloneNode(true);
       this._itemTemplateImage = this._itemTemplate.querySelector('.elements__image');
+      this._card = this.getCard();
     }
     _getElementFromTemplate() {
       this._itemTemplateImage.setAttribute('alt',this._place);
@@ -19,13 +20,11 @@ export class Card {
       const _trash = _listElement.querySelector('.elements__trash-button');
       const _imageElement = _listElement.querySelector('.elements__image'); 
       _like.addEventListener('click', () => {_like.classList.toggle('elements__like-button_on')});
-      _trash.addEventListener('click', () => {_trash.parentNode.remove()});
+      _trash.addEventListener('click', () => {this._card.remove()});
       _imageElement.addEventListener('click', () => {
         fullViewImage.setAttribute('src',this._link);
         fullViewImage.setAttribute('alt',this._place);
         imgPopupCaptionElement.textContent = this._place;
-        console.log(imgPopupElement);
-        imgPopupElement.classList.add('popup__overlay');
         openPopup(imgPopupElement);
       });
       return _listElement;

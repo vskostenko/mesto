@@ -30,3 +30,6 @@
     color: #000;
     opacity: 0.2;
 }
+.popup__button:disabled:hover {
+    cursor:default;
+}
