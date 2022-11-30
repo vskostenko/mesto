@@ -1,4 +1,4 @@
-import { submitFormAddElement } from "./global.js";
+import { submitFormAddElement } from "../utils/global.js";
 export class FormValidator {
     constructor (settings,form) {
         this._settings = settings;

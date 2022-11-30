@@ -1,13 +1,12 @@
-import { initialCards } from './initalСards.js';
-import { Card } from './card.js';
-import { FormValidator } from './formvalidator.js';
-import popup from './popup.js';
-import { profileEditButton,addButton,editProfilePopup,popupElementsArray,title,popupTitle,subtitle,popupSubtitleInput,
-  formProfileElement,listElement,newItemElement,submitFormAddElement,placeInput,urlInput,templateElement,validationSettings,imgPopupElement } from './global.js';
-import { Section } from './section.js';
-import PopupWithImage  from "./PopupWithImage.js";
-import {PopupWithForm}  from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
+import './index.css';
+import { initialCards } from '../script/utils/initalСards.js';
+import { Card } from '../script/components/card.js';
+import { FormValidator } from '../script/components/formvalidator.js';
+import { profileEditButton,addButton,editProfilePopup,title,subtitle,listElement,newItemElement,submitFormAddElement,placeInput,urlInput,templateElement,validationSettings,imgPopupElement } from '../script/utils/global.js';
+import { Section } from '../script/components/section.js';
+import PopupWithImage  from '../script/components/PopupWithImage.js';
+import {PopupWithForm}  from '../script/components/PopupWithForm.js';
+import { UserInfo } from '../script/components/UserInfo.js';
 export { imagePopup };
 
 
@@ -48,7 +47,7 @@ function enableVaildation (settings) {
       newValid.enableValidation();
   }); 
 }
-
+//инициализация классов 
 const cardSection = new Section ({
   items: initialCards,
   renderer: (cardItem)=> {
@@ -58,7 +57,6 @@ const cardSection = new Section ({
   '.elements');
   cardSection.renderItems();
 
-//инициализация классов 
 const newItemPopup = new PopupWithForm(newItemElement,submitAddFormHandler);
 newItemPopup._getInputValues();
 newItemPopup.setEventListeners();
@@ -71,7 +69,9 @@ profilePopup.setEventListeners();
 
 const userInfo = new UserInfo (title,subtitle);
 
+//Обработчики кнопок на главной странице
 profileEditButton.addEventListener('click', openEditProfilePopupHandler);
 addButton.addEventListener('click', () => newItemPopup.open());
+//валидация форм
 enableVaildation(validationSettings);
 
