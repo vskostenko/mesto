@@ -1,4 +1,3 @@
-import { submitFormAddElement } from "../utils/global.js";
 export class FormValidator {
     constructor (settings,form) {
         this._settings = settings;
@@ -35,13 +34,12 @@ export class FormValidator {
     }
 
     _handleValidateInput(evt) {
-        const _currentForm = evt.currentTarget;
         const _currentField = evt.srcElement;
         this._toggleInputErrorState(_currentField,this._settings);
-        this._toggleButtonState(_currentForm.checkValidity());
+        this._toggleButtonState(this._form.checkValidity());
     }
-    static disableSubmitNewcardButton (button) {
-        button.setAttribute('disabled',true);
+    disableSubmitNewcardButton() {
+        this._submitButton.setAttribute('disabled',true);
     }
     enableValidation () {
         this._form.addEventListener('input',(evt) => this._handleValidateInput(evt)); 
