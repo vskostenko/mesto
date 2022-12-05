@@ -8,7 +8,7 @@ export class FormValidator {
         if (state) {
             this._submitButton.removeAttribute('disabled');
         } else {
-            this._submitButton.setAttribute('disabled',true);
+            this.disableSubmitButton();
         }
     }
 
@@ -38,7 +38,7 @@ export class FormValidator {
         this._toggleInputErrorState(_currentField,this._settings);
         this._toggleButtonState(this._form.checkValidity());
     }
-    disableSubmitNewcardButton() {
+    disableSubmitButton() {
         this._submitButton.setAttribute('disabled',true);
     }
     enableValidation () {

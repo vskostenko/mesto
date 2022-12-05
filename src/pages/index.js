@@ -1,9 +1,9 @@
 import './index.css';
 import { initialCards } from '../script/utils/initalСards.js';
-import { Card } from '../script/components/card.js';
-import { FormValidator } from '../script/components/formvalidator.js';
+import { Card } from '../script/components/Card.js';
+import { FormValidator } from '../script/components/Formvalidator.js';
 import { profileEditButton,addButton,editProfilePopup,title,subtitle,listElement,newItemElement,submitFormAddElement,editProfileForm,newItemForm,templateElement,validationSettings,imgPopupElement } from '../script/utils/global.js';
-import { Section } from '../script/components/section.js';
+import { Section } from '../script/components/Section.js';
 import PopupWithImage  from '../script/components/PopupWithImage.js';
 import {PopupWithForm}  from '../script/components/PopupWithForm.js';
 import { UserInfo } from '../script/components/UserInfo.js';
@@ -30,9 +30,9 @@ function submitFormProfileHandler(data) {
 }
 
 function submitAddFormHandler() {
-  const currentCard = createCard(newItemPopup._getInputValues());
+  const currentCard = createCard(this._getInputValues());
   cardSection.addItem(currentCard);
-  newItemFormValidator.disableSubmitNewcardButton;
+  newItemFormValidator.disableSubmitButton();
 }
 
 //инициализация классов 
