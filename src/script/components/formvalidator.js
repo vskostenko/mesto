@@ -2,7 +2,7 @@ export class FormValidator {
     constructor (settings,form) {
         this._settings = settings;
         this._form = form;
-        this._submitButton = form.querySelector(this._settings.submitButtonSelector);;
+        this._submitButton = form.querySelector(this._settings.submitButtonSelector);
     }
     _setSubmitButton (state) {
         if (state) {
@@ -14,10 +14,14 @@ export class FormValidator {
 
     _makeInputInvalid(input) {
         input.classList.add(this._settings.inputErrorClass);
+        const _errorSpan = input.parentNode.querySelector(`#${input.name}-error`);
+        _errorSpan.textContent = input.validationMessage;
     }
     
     _makeInputValid(input) {
         input.classList.remove(this._settings.inputErrorClass);
+        const _errorSpan = input.parentNode.querySelector(`#${input.name}-error`);
+        _errorSpan.textContent = '';
     }
     
     _toggleInputErrorState(input) {
@@ -26,8 +30,6 @@ export class FormValidator {
         } else {
             this._makeInputValid(input,this._settings);
         }
-        const _errorSpan = input.parentNode.querySelector(`#${input.name}-error`);
-        _errorSpan.textContent = input.validationMessage;
     }    
     _toggleButtonState(state) {
         this._setSubmitButton(state);
@@ -38,6 +40,18 @@ export class FormValidator {
         this._toggleInputErrorState(_currentField,this._settings);
         this._toggleButtonState(this._form.checkValidity());
     }
+    resetError() {
+        const inputList = this._form.querySelectorAll(this._settings.inputSelector);
+        console.log(inputList);
+        inputList.forEach((input) => {
+          // здесь очищаем ошибки валидации с помощью _hideInputError
+
+          this._makeInputValid(input);
+
+          });
+        // актуализируем состояние кнопки
+        this.disableSubmitButton();
+        }
     disableSubmitButton() {
         this._submitButton.setAttribute('disabled',true);
     }

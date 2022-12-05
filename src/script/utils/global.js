@@ -21,7 +21,7 @@ export const newItemForm = newItemElement.querySelector('.popup__form');
 
 export const validationSettings = {
   formSelector: '.popup__form', 
-  inputSelector: '.popup__input',
+  inputSelector: '.popup__field',
   submitButtonSelector: '.popup__button', 
   inactiveButtonClass: 'popup__button_disabled',
   inputErrorClass: 'popup__field_error',

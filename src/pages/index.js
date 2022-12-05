@@ -7,7 +7,6 @@ import { Section } from '../script/components/Section.js';
 import PopupWithImage  from '../script/components/PopupWithImage.js';
 import {PopupWithForm}  from '../script/components/PopupWithForm.js';
 import { UserInfo } from '../script/components/UserInfo.js';
-const formValidators = {};
 
 function createCard (item) {  
   const myNewItem = new Card(item,
@@ -21,8 +20,14 @@ function createCard (item) {
 
 function openEditProfilePopupHandler() {
   const data = userInfo.getUserInfo();
+  formEditProfileValidator.resetError();
   profilePopup.open();
   profilePopup.setInputValues(data);
+}
+
+function openNewItemPopup () {
+  newItemFormValidator.resetError();
+  newItemPopup.open();
 }
 
 function submitFormProfileHandler(data) {
@@ -32,7 +37,6 @@ function submitFormProfileHandler(data) {
 function submitAddFormHandler() {
   const currentCard = createCard(this._getInputValues());
   cardSection.addItem(currentCard);
-  newItemFormValidator.disableSubmitButton();
 }
 
 //инициализация классов 
@@ -57,7 +61,7 @@ const userInfo = new UserInfo (title,subtitle);
 
 //Обработчики кнопок на главной странице
 profileEditButton.addEventListener('click', openEditProfilePopupHandler);
-addButton.addEventListener('click', () => newItemPopup.open());
+addButton.addEventListener('click', openNewItemPopup);
 //валидация форм
 const formEditProfileValidator = new FormValidator(validationSettings,editProfileForm);
 formEditProfileValidator.enableValidation();
