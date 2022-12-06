@@ -34,9 +34,8 @@ function submitFormProfileHandler(data) {
   userInfo.setUserInfo(data);
 }
 
-function submitAddFormHandler() {
-  const currentCard = createCard(this._getInputValues());
-  cardSection.addItem(currentCard);
+function submitAddFormHandler(data) {
+  cardSection.addItem(createCard(data));
 }
 
 //инициализация классов 

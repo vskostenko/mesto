@@ -42,12 +42,9 @@ export class FormValidator {
     }
     resetError() {
         const inputList = this._form.querySelectorAll(this._settings.inputSelector);
-        console.log(inputList);
         inputList.forEach((input) => {
           // здесь очищаем ошибки валидации с помощью _hideInputError
-
           this._makeInputValid(input);
-
           });
         // актуализируем состояние кнопки
         this.disableSubmitButton();
