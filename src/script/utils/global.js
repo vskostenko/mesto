@@ -18,7 +18,7 @@ export const urlInput = document.querySelector("input[name='imagelink']");
 export const templateElement = document.querySelector('#template').content;
 export const editProfileForm = editProfilePopup.querySelector('.popup__form');
 export const newItemForm = newItemElement.querySelector('.popup__form');
-
+export const deleteItemPopup = document.querySelector('#delete');
 export const validationSettings = {
   formSelector: '.popup__form', 
   inputSelector: '.popup__field',

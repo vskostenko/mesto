@@ -9,7 +9,12 @@ export class UserInfo {
         return ({title,subtitle});
     }
     setUserInfo(data){
-        this._titleElement.textContent = data.title;
-        this._subtitleElement.textContent = data.subtitle;
+        this._userId = data._id;
+        console.log(data._id);
+        this._titleElement.textContent = data.name;
+        this._subtitleElement.textContent = data.about;
+    }
+    getUserId () {
+        return this._userId;
     }
 }
