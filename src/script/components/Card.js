@@ -35,13 +35,15 @@ export class Card {
       this._trashElement.addEventListener('click', () => this._handleDeleteCard(this));
       }
     }
-    likeCard(likeCount) {
+    likeCard(likes) {
+      this._likes = likes;
       this._likeElement.classList.add('elements__like-button_on');
-      this._setLikesCount(likeCount);
+      this._setLikesCount(likes.length);
     }
-    dislikeCard(likeCount) {
+    dislikeCard(likes) {
+        this._likes = likes;
         this._likeElement.classList.remove('elements__like-button_on');
-        this._setLikesCount(likeCount);
+        this._setLikesCount(likes.length);
       }
     _setLikesCount(likeCount) {
       this._itemTemplate.querySelector('.elements__like-count').textContent = likeCount;
@@ -53,7 +55,7 @@ export class Card {
       this._cardElement.remove();
     }
     getCard () {
-        if (this.isCardLiked()) {this.likeCard(this._likesCount)};//отобразим наши лайки
+        if (this.isCardLiked()) {this.likeCard(this._likes)};//отобразим наши лайки
         this._setEventListeners();
         return this._cardElement;
     }

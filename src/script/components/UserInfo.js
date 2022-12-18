@@ -1,7 +1,8 @@
 export class UserInfo {
-    constructor(userSelector,aboutSelector) {
-        this._titleElement= userSelector;
-        this._subtitleElement = aboutSelector;
+    constructor(userElement,aboutElement,avatarElement) {
+        this._titleElement= userElement;
+        this._subtitleElement = aboutElement;
+        this._avatarElement = avatarElement;
     }
     getUserInfo() {
         const title = this._titleElement.textContent;
@@ -10,7 +11,7 @@ export class UserInfo {
     }
     setUserInfo(data){
         this._userId = data._id;
-        console.log(data._id);
+        this._avatarElement.src = data.avatar;
         this._titleElement.textContent = data.name;
         this._subtitleElement.textContent = data.about;
     }
