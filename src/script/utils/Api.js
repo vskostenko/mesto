@@ -69,13 +69,13 @@ export class Api {
         headers: this._headers})
         .then(res => this._errorDispatcher(res))
     }
-    
+
     updateAvatar(data){
        return fetch(`${this._baseUrl}users/me/avatar`, {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({
-          avatar: data.link
+          avatar: data.avlink
           })
         })
         .then(res => this._errorDispatcher(res))
