@@ -45,10 +45,10 @@ function submitFormProfileHandler(data) {
   api.editProfile(data)
   .then ((res) => { 
     userInfo.setUserInfo(res);
-    profilePopup.renderLoading(false);
   })
   .catch((err) => alert(err))
   .finally(() => {
+    profilePopup.close()
     profilePopup.renderLoading(false);
   })
 }
@@ -61,6 +61,7 @@ function submitFormAvatarHandler(data) {
   })
   .catch((err) => alert(err))
   .finally(() => {
+    avatarPopup.close()
     avatarPopup.renderLoading(false);
   })
 
@@ -75,14 +76,19 @@ function submitAddFormHandler(data) {
   })
   .catch((err) => alert(err))
   .finally(() => {
-    avatarPopup.renderLoading(false);
+    newItemPopup.close()
+    newItemPopup.renderLoading(false);
   })
   
 }
 
 function submitDeleteCardHandler(card) {
   api.delCard(card.getCardId())
-  .then (card.delete())
+  .then (()=> {
+    card.delete();
+    deleteCardPopup.close()
+  }
+  )
   .catch((err) => alert(err))
 }
 

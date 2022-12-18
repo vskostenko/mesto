@@ -3,7 +3,7 @@ export class Api {
       this._baseUrl = options.baseUrl;
       this._headers = options.headers;
     }
-    _errorDispatcher (res) {
+    _handleResponse (res) {
       if (res.ok) {
         return res.json()}
       return Promise.reject(`Ошибка: ${res.status}`)
@@ -14,14 +14,14 @@ export class Api {
             method: 'GET',
             headers: this._headers
           })
-          .then(res => this._errorDispatcher(res))
+          .then(res => this._handleResponse(res))
         } 
     getUserInfo() {
             return fetch(`${this._baseUrl}/users/me`, {
               method: 'GET',
               headers: this._headers,
             })
-            .then(res => this._errorDispatcher(res))
+            .then(res => this._handleResponse(res))
         }
             
     editProfile (data) {
@@ -33,7 +33,7 @@ export class Api {
             about: data.subtitle
           })
         })
-        .then(res => this._errorDispatcher(res))     
+        .then(res => this._handleResponse(res))     
     }
 
     addCard(data) {
@@ -45,7 +45,7 @@ export class Api {
             link: data.link
           })
         })
-        .then(res => this._errorDispatcher(res))
+        .then(res => this._handleResponse(res))
     }
 
     delCard(cardId){
@@ -53,21 +53,21 @@ export class Api {
         method: 'DELETE',
         headers: this._headers
         })
-        .then(res => this._errorDispatcher(res))
+        .then(res => this._handleResponse(res))
     }
 
     addCardLike(cardId){
       return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
         method: "PUT",
         headers: this._headers})
-        .then(res => this._errorDispatcher(res))
+        .then(res => this._handleResponse(res))
     }
 
     delCardLike(cardId){
       return fetch(`${this._baseUrl}cards/${cardId}/likes`, {
         method: "DELETE",
         headers: this._headers})
-        .then(res => this._errorDispatcher(res))
+        .then(res => this._handleResponse(res))
     }
 
     updateAvatar(data){
@@ -78,7 +78,7 @@ export class Api {
           avatar: data.avlink
           })
         })
-        .then(res => this._errorDispatcher(res))
+        .then(res => this._handleResponse(res))
     }
 }
 
